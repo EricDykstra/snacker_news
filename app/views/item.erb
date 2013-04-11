@@ -2,8 +2,8 @@
   <div class="news_item">
     <p><a method="get" action="/item/<%= @post.id %>" href="/item/<%= @post.id %>">^</a> <a href="<%= @post.url %>"> <%= @post.title %></a></p>
     <p>(<%= @post.url %>)</p>
-    <p><%= @post.comment_count %> 
-      <%= @post.comment_count == 1 ? "point" : "points" %>
+    <p><%= @post.vote_count %> 
+      <%= @post.vote_count == 1 ? "point" : "points" %>
       by <%= @post.author %>
       <%= time_ago(@post.created_at) %> ago | <%= "#{@post.comments.count} comments" %>
     </p>

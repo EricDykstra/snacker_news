@@ -28,7 +28,7 @@ end
 get '/item/:postid' do
   Postvote.create(:user_id => session[:id],
                   :post_id => params[:postid])
-  redirect '/item/' + params[:postid]
+  redirect '/item/' + params[:postid]s
 end
 
 #sessions
