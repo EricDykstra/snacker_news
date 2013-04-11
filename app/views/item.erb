@@ -1,0 +1,24 @@
+<div class="container" >
+  <div class="news_item">
+    <p><a method="get" action="/item/<%= @post.id %>" href="/item/<%= @post.id %>">^</a> <a href="<%= @post.url %>"> <%= @post.title %></a></p>
+    <p>(<%= @post.url %>)</p>
+    <p><%= @post.comment_count %> 
+      <%= @post.comment_count == 1 ? "point" : "points" %>
+      by <%= @post.author %>
+      <%= time_ago(@post.created_at) %> ago | <%= "#{@post.comments.count} comments" %>
+    </p>
+  </div>
+  <form method="post" action="/comment/add?postid=<%=@post.id%>">
+    <textarea rows="6" cols="50" name="comment[content]"></textarea>
+    <input type="submit" value="add comment">
+  </form>
+  <% @comments.each do |comment|%>
+    <div class="comment">
+      <p><a href="/profile/<%= comment.user.id %>"><%= comment.user.username %></a></p>
+      <p><%= time_ago(comment.created_at) %></p>
+      <p><%= comment.vote_count %> votes</p>
+      <p><%= comment.content %></p>
+
+    </div>
+  <% end %> 
+</div>

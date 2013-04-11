@@ -1,0 +1,15 @@
+<div class="container">
+  <%= params[:error] %>
+  <% @posts.each do |post| %>
+    <div class="news_item">
+
+      <p><a href="<%= post.url %>"> <%= post.title %></a></p>
+      <p>(<%= post.url %>)</p>
+      <p><%= post.vote_count %> 
+        <%= post.vote_count == 1 ? "point" : "points" %>
+        by <%= post.author %>
+        <%= time_ago(post.created_at) %> ago | <a href="/item/<%= post.id %>"><%= post.comments? ? "#{post.comments.count} comments" : "discuss" %></a>
+      </p>
+    </div>
+  <% end %>
+</div>
